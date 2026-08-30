@@ -1,0 +1,60 @@
+export function produtos_calcados(products){
+    const sectionAlvo_excluir= document.getElementById('produtos-todos');
+    sectionAlvo_excluir.innerHTML = ``
+    const sectionAlvo = document.getElementById('produtos-todos');
+    const novaDiv_pt = document.createElement('div');
+    novaDiv_pt.className = 'card-Produtos';
+    const novoH3 = document.createElement('h3');
+    novoH3.className = 'text-section-p'
+    novoH3.textContent ='Produtos em destaque'
+    const novospan = document.createElement('span');
+    novospan.className = 'span-text'
+    novospan.textContent = '1 produtos(s)'
+    sectionAlvo.appendChild(novoH3);
+    sectionAlvo.appendChild(novospan);
+    for (let i = 0; i < products.length; i++) {
+        if(products[i].category == "calçados"){
+            const product = products[i];
+            novaDiv_pt.innerHTML += `
+                <article class='produtos-divisao'>
+                    <div class="product-image">
+                    ${product.icon}
+                    </div>
+
+                    <div class="product-info">
+
+                        <h3 class="product-name">
+                            ${product.name}
+                        </h3>
+
+                        <div class="product-rating">
+                            ⭐ ${product.rating}
+                        </div>
+
+                        <p class="product-price">
+                            R$ ${product.price.toFixed(2).replace(".", ",")}
+                        </p>
+
+                        <div class="product-actions">
+
+                            <button 
+                                class="add-cart"
+                                onclick="addToCart(${product.id})">
+                                Adicionar ao carrinho
+                            </button>
+
+                            <button 
+                                class="buy-now"
+                                onclick="openProduct(${product.id})">
+                                Comprar
+                            </button>
+
+                        </div>
+
+                    </div>
+                </article>
+            `;
+        }
+    }
+    sectionAlvo.appendChild(novaDiv_pt);
+}
