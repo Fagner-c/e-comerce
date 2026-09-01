@@ -1,6 +1,8 @@
 export function produtos_acessorios(products){
     const sectionAlvo_excluir= document.getElementById('produtos-todos');
     sectionAlvo_excluir.innerHTML = ``
+    const cardDesconto = document.querySelector(".card-desconto");
+    cardDesconto.classList.remove("off");
     const sectionAlvo = document.getElementById('produtos-todos');
     const novaDiv_pt = document.createElement('div');
     novaDiv_pt.className = 'card-Produtos';
@@ -17,43 +19,43 @@ export function produtos_acessorios(products){
             const product = products[i];
             novaDiv_pt.innerHTML += `
                 <article class='produtos-divisao'>
-                    <div class="product-image">
-                    ${product.icon}
+                <div class="product-image">
+                ${product.icon}
+                </div>
+
+                <div class="product-info">
+
+                    <h3 class="product-name">
+                        ${product.name}
+                    </h3>
+
+                    <div class="product-rating">
+                        ⭐ ${product.rating}
                     </div>
 
-                    <div class="product-info">
+                    <p class="product-price">
+                        R$ ${product.price.toFixed(2).replace(".", ",")}
+                    </p>
 
-                        <h3 class="product-name">
-                            ${product.name}
-                        </h3>
+                    <div class="product-actions">
 
-                        <div class="product-rating">
-                            ⭐ ${product.rating}
-                        </div>
+                        <button 
+                            class="add-cart"
+                            data-id = ${product.id}>
+                            Adicionar ao carrinho
+                        </button>
 
-                        <p class="product-price">
-                            R$ ${product.price.toFixed(2).replace(".", ",")}
-                        </p>
-
-                        <div class="product-actions">
-
-                            <button 
-                                class="add-cart"
-                                onclick="addToCart(${product.id})">
-                                Adicionar ao carrinho
-                            </button>
-
-                            <button 
-                                class="buy-now"
-                                onclick="openProduct(${product.id})">
-                                Comprar
-                            </button>
-
-                        </div>
+                        <button 
+                            class="buy-now"
+                            data-id = ${product.id}>
+                            Comprar
+                        </button>
 
                     </div>
-                </article>
-            `;
+
+                </div>
+            </article>
+        `;
         }
     }
     sectionAlvo.appendChild(novaDiv_pt);

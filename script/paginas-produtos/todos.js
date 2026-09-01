@@ -1,4 +1,7 @@
+
 export function produtos_todos(products){
+    const cardDesconto = document.querySelector(".card-desconto");
+    cardDesconto.classList.remove("off");
     const sectionAlvo_excluir= document.getElementById('produtos-todos');
     sectionAlvo_excluir.innerHTML = ``
     const div_alvo = document.getElementById('text')
@@ -39,13 +42,13 @@ export function produtos_todos(products){
 
                         <button 
                             class="add-cart"
-                            onclick="addToCart(${product.id})">
+                            data-id = ${product.id}>
                             Adicionar ao carrinho
                         </button>
 
                         <button 
                             class="buy-now"
-                            onclick="openProduct(${product.id})">
+                            data-id = ${product.id}>
                             Comprar
                         </button>
 

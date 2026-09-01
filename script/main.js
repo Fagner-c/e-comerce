@@ -3,6 +3,8 @@ import { produtos_roupas } from "./paginas-produtos/roupas.js";
 import { produtos_eletronicos } from "./paginas-produtos/eletronicos.js";
 import { produtos_acessorios } from "./paginas-produtos/acessorios.js";
 import { produtos_calcados } from "./paginas-produtos/calcados.js";
+import { openProduct } from "./campo_produto.js";
+
 let products = [
   {id:1,name:"Fone Bluetooth Pro",price:129.90,category:"Eletrônicos",icon:"🎧",rating:4.8,description:"Fone sem fio com estojo de carregamento, conexão rápida e bateria de longa duração."},
   {id:2,name:"Smartwatch Fit X",price:189.90,category:"Eletrônicos",icon:"⌚",rating:4.7,description:"Smartwatch moderno com monitoramento de atividades, notificações e tela colorida."},
@@ -34,3 +36,41 @@ const btn_cl = document.querySelector('#btn-cl')
 btn_cl.addEventListener('click', () => {
         produtos_calcados(products);
 });
+
+
+const sectionAlvo = document.getElementById('produtos-todos');
+sectionAlvo.addEventListener("click", function(event) {
+
+
+    const botaoCarrinho = event.target.closest(".add-cart");
+
+    if (botaoCarrinho) {
+
+        const id = Number(botaoCarrinho.dataset.id);
+
+        const produto = products.find(product => product.id === id);
+
+        console.log("Carrinho:", produto);
+
+        return;
+    }
+
+
+    // BOTÃO COMPRAR
+    const botaoComprar = event.target.closest(".buy-now");
+
+    if (botaoComprar) {
+        const cardDesconto = document.querySelector(".card-desconto");
+        cardDesconto.classList.add("off");
+        const id = Number(botaoComprar.dataset.id);
+
+        const produto = products.find(product => product.id === id);
+        console.log("ID:", id);
+        console.log("PRODUTO ENCONTRADO:", produto);
+        openProduct(produto)
+        
+        return;
+    }
+
+});
+
