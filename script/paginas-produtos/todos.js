@@ -1,5 +1,7 @@
 
 export function produtos_todos(products){
+    const sectionAlvo_excluir2= document.querySelector('.campo-carrinho');
+    sectionAlvo_excluir2.innerHTML = ``
     const cardDesconto = document.querySelector(".card-desconto");
     cardDesconto.classList.remove("off");
     const sectionAlvo_excluir= document.getElementById('produtos-todos');

@@ -1,6 +1,8 @@
 export function openProduct(produto){
     const sectionAlvo_excluir= document.getElementById('produtos-todos');
     sectionAlvo_excluir.innerHTML = ``
+    const sectionAlvo_excluir2= document.querySelector('.campo-carrinho');
+    sectionAlvo_excluir2.innerHTML = ``
     const sectionAlvo = document.getElementById('produtos-todos');
     const novaDiv_pc = document.createElement('div');
     novaDiv_pc.className = 'card-compra';
@@ -49,31 +51,11 @@ export function openProduct(produto){
                         <p class="estoque">
                             ✓ Em estoque
                         </p>
-                        <div class="quantidade">
-
-                            <strong>Quantidade:</strong>
-
-                            <button class="menos" id="menos">
-                                −
-                            </button>
-
-                            <input
-                                type="number"
-                                class="quantidade-input"
-                                value="1"
-                                min="1"
-                                id="quantidade"
-                            >
-
-                            <button class="mais" id ="mais">
-                                +
-                            </button>
-
-                        </div>
+                        
                         <div class="botoes-produto">
 
                             <button
-                                class="btn-carrinho"
+                                class="add-cart"
                                 data-id="${produto.id}">
                                 🛒 Adicionar ao carrinho
                             </button>
@@ -93,16 +75,4 @@ export function openProduct(produto){
         </article>
         `;
     sectionAlvo.appendChild(novaDiv_pc);
-    const quantidade = novaDiv_pc.querySelector("#quantidade");
-    const mais = novaDiv_pc.querySelector("#mais");
-    const menos = novaDiv_pc.querySelector("#menos");
-    mais.addEventListener("click", () => {
-        quantidade.value = Number(quantidade.value) + 1;
-    });
-
-    menos.addEventListener("click", () => {
-        if (Number(quantidade.value) > 1) {
-            quantidade.value = Number(quantidade.value) - 1;
-        }
-    });
 }

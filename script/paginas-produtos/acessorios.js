@@ -1,4 +1,6 @@
 export function produtos_acessorios(products){
+    const sectionAlvo_excluir2= document.querySelector('.campo-carrinho');
+    sectionAlvo_excluir2.innerHTML = ``
     const sectionAlvo_excluir= document.getElementById('produtos-todos');
     sectionAlvo_excluir.innerHTML = ``
     const cardDesconto = document.querySelector(".card-desconto");
