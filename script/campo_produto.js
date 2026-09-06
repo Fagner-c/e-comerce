@@ -76,3 +76,4 @@ export function openProduct(produto){
         `;
     sectionAlvo.appendChild(novaDiv_pc);
 }
+ 
