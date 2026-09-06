@@ -9,10 +9,232 @@ body {
     background-color: whitesmoke;
     color: #222;
 }
+.login-container {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgba(0, 0, 0, 0.55);
+
+    z-index: 2000;
+}
+
+
+.login-container.ativo {
+    display: flex;
+}
+
+
+.login-card {
+    position: relative;
+
+    width: 400px;
+
+    background-color: white;
+
+    border-radius: 10px;
+
+    padding: 35px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+
+.fechar-login {
+    position: absolute;
+
+    top: 12px;
+    right: 15px;
+
+    border: none;
+    background: transparent;
+
+    font-size: 28px;
+    color: #777;
+
+    cursor: pointer;
+}
+
+.fechar-login:hover {
+    color: #ee4d2d;
+}
+
+
+
+.login-titulo {
+    text-align: center;
+
+    margin-bottom: 30px;
+}
+
+.login-titulo h2 {
+    margin-bottom: 8px;
+
+    font-size: 26px;
+
+    color: #333;
+}
+
+.login-titulo p {
+    color: #777;
+
+    font-size: 14px;
+}
+
+
+.campo-login {
+    display: flex;
+
+    flex-direction: column;
+
+    margin-bottom: 20px;
+}
+
+.campo-login label {
+    margin-bottom: 7px;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    color: #444;
+}
+
+.campo-login input {
+    width: 100%;
+
+    height: 45px;
+
+    padding: 0 12px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 5px;
+
+    outline: none;
+
+    font-size: 14px;
+
+    transition: 0.2s;
+}
+
+.campo-login input:focus {
+    border-color: #ee4d2d;
+
+    box-shadow: 0 0 0 2px rgba(238, 77, 45, 0.1);
+}
+
 
 /* =========================
-   HEADER
+   OPÇÕES
 ========================= */
+
+.opcoes-login {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+
+    font-size: 12px;
+}
+
+.opcoes-login label {
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    color: #666;
+}
+
+.opcoes-login a {
+    color: #ee4d2d;
+
+    text-decoration: none;
+}
+
+.opcoes-login a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================
+   BOTÃO ENTRAR
+========================= */
+
+.botao-entrar {
+    width: 100%;
+
+    height: 45px;
+
+    border: none;
+
+    border-radius: 5px;
+
+    background-color: #ee4d2d;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.botao-entrar:hover {
+    background-color: #d94325;
+}
+
+
+/* =========================
+   CADASTRO
+========================= */
+
+.cadastro-login {
+    text-align: center;
+
+    margin-top: 25px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid #eee;
+}
+
+.cadastro-login p {
+    color: #777;
+
+    font-size: 13px;
+}
+
+.cadastro-login a {
+    color: #ee4d2d;
+
+    font-weight: bold;
+
+    text-decoration: none;
+}
+
+
+/* =========================
+   CELULAR
+========================= */
+
 
 header {
     background: linear-gradient(180deg, #ee4d2d, #ff6347);
@@ -131,10 +353,27 @@ header {
     opacity: 100%;
     text-decoration: underline;
 }
+.icone-login {
+    font-size: 22px;
+}
+.btn-login{
+    height: 45px;
 
-/* =========================
-   MAIN
-========================= */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 0 15px;
+    border-radius: 100px;
+    background-color: rgb(151, 147, 147);
+    background-color: white;
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
 
 main {
     width: min(1200px, 100%);
@@ -659,10 +898,76 @@ main {
     opacity: 0.9;
 }
 
+.carrinho-vazio {
+    width: 100%;
+    min-height: 500px;
+
+    background-color: white;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 40px 20px;
+}
+
+.icone-carrinho-vazio {
+    font-size: 90px;
+    margin-bottom: 20px;
+}
+
+.carrinho-vazio h2 {
+    font-size: 26px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.carrinho-vazio p {
+    color: #777;
+    font-size: 16px;
+    margin-bottom: 25px;
+}
+
+.voltar-produtos {
+    border: none;
+    border-radius: 5px;
+
+    background-color: #ee4d2d;
+    color: white;
+
+    padding: 12px 25px;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.voltar-produtos:hover {
+    background-color: #d94325;
+}
+.voltar-produtos a{
+    text-decoration: none;
+    color: white;
+}
+
 /* =========================
    RESPONSIVIDADE
 ========================= */
 
+@media (max-width: 500px) {
+
+    .login-card {
+        width: 90%;
+
+        padding: 30px 20px;
+    }
+
+}
 /* Tablets */
 @media (max-width: 1000px) {
     .card-Produtos {

@@ -1,10 +1,9 @@
 export function carrinho(produto){
     const sectionAlvo_excluir= document.getElementById('produtos-todos');
     sectionAlvo_excluir.innerHTML = ``
-    
+    const sectionAlvo_excluir2= document.querySelector('.campo-carrinho');
+    sectionAlvo_excluir2.innerHTML = ``
     if (produto.length > 0){
-        const sectionAlvo_excluir2= document.querySelector('.campo-carrinho');
-        sectionAlvo_excluir2.innerHTML = ``
         const main_select = document.querySelector(".campo-carrinho")
         const div_produtos  = document.createElement('div')
         div_produtos.className = "carrinho-prod "
@@ -148,7 +147,29 @@ export function carrinho(produto){
                 `R$ ${(subtotal + 19.90).toFixed(2)}`;
         }
     }
- }
+    else{
+        sectionAlvo_excluir2.innerHTML = `
+        <div class="carrinho-vazio">
+
+            <div class="icone-carrinho-vazio">
+                🛒
+            </div>
+
+            <h2>Seu carrinho está vazio</h2>
+
+            <p>
+                Você ainda não adicionou nenhum produto ao carrinho.
+            </p>
+
+            <button class="voltar-produtos">
+                <a href="index.html">Continuar comprando</a>
+            </button>
+
+        </div>
+    `;
+    }
+    
+}
 
 
    

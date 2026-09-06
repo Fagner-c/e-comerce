@@ -5,6 +5,9 @@ import { produtos_acessorios } from "./paginas-produtos/acessorios.js";
 import { produtos_calcados } from "./paginas-produtos/calcados.js";
 import { openProduct } from "./campo_produto.js";
 import { carrinho } from "./carrinho.js";
+import { login } from "./login.js";
+import { conta } from "./criar-conta.js";
+var login_ativo = false
 let products = [
   {id:1,name:"Fone Bluetooth Pro",price:129.90,category:"Eletrônicos",icon:"🎧",rating:4.8,description:"Fone sem fio com estojo de carregamento, conexão rápida e bateria de longa duração.", quantidade: 1},
   {id:2,name:"Smartwatch Fit X",price:189.90,category:"Eletrônicos",icon:"⌚",rating:4.7,description:"Smartwatch moderno com monitoramento de atividades, notificações e tela colorida.",quantidade: 1},
@@ -15,6 +18,9 @@ let products = [
   {id:7,name:"Camiseta Premium",price:59.90,category:"Roupa",icon:"👕",rating:4.7,description:"Camiseta de tecido macio e corte moderno para combinar com vários estilos.", quantidade: 1},
   {id:8,name:"Garrafa Térmica",price:49.90,category:"Acessórios",icon:"🧴",rating:4.8,description:"Garrafa térmica reutilizável para manter sua bebida na temperatura ideal.", quantidade: 1}
 ];
+let usuer=[
+    {id:1, email:"fagnercaardoso@gmail.com", senha:"abacate"},
+]
 produtos_todos(products)
 const btn_todos = document.querySelector('#btn-todos')
 btn_todos.addEventListener('click', () => {
@@ -85,4 +91,16 @@ const cardDesconto = document.querySelector(".card-desconto");
                 cardDesconto.classList.add("off");
                 carrinho(products_comprados)
                 
+});
+const btnLogin = document.querySelector(".btn-login");
+btnLogin.addEventListener("click", function() {
+        login_ativo = login(usuer)
+        console.log(login_ativo)
+    });
+document.addEventListener("click", function(event) {
+
+    if (event.target.classList.contains("new-conta")) {
+        conta(usuer);
+    }
+
 });
