@@ -9,6 +9,70 @@ body {
     background-color: whitesmoke;
     color: #222;
 }
+.fechar-card {
+    position: absolute;
+
+    top: 12px;
+    right: 15px;
+
+    border: none;
+    background: transparent;
+
+    font-size: 28px;
+    color: #777;
+
+    cursor: pointer;
+}
+
+.fechar-card:hover {
+    color: #ee4d2d;
+}
+.cadastro-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.55);
+    z-index: 2000;
+}
+.cadastro-container.ativo {
+    display: flex;
+
+}
+
+
+.cadastro-card {
+   position: relative;
+
+    width: 400px;
+
+    background-color: white;
+
+    border-radius: 10px;
+
+    padding: 35px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.cadastro-card .login-titulo {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.cadastro-card .login-titulo h2 {
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.cadastro-card .login-titulo p {
+    color: #777;
+    font-size: 14px;
+}
 .login-container {
     position: fixed;
 
@@ -27,7 +91,59 @@ body {
 
     z-index: 2000;
 }
+#cadastroForm {
+    width: 100%;
+}
 
+#cadastroForm .campo-login {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+}
+
+#cadastroForm .campo-login label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 7px;
+}
+
+#cadastroForm .campo-login input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+#cadastroForm .campo-login input:focus {
+    border-color: #ee4d2d;
+    box-shadow: 0 0 0 2px rgba(238, 77, 45, 0.1);
+}
+
+#cadastroForm .campo-login input::placeholder {
+    color: #999;
+}
+
+#cadastroForm .botao-entrar {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ee4d2d;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#cadastroForm .botao-entrar:hover {
+    background-color: #d94325;
+}
 
 .login-container.ativo {
     display: flex;

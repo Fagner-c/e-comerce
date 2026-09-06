@@ -2,54 +2,75 @@ export function conta(usuer){
     
     const camnpo_lg = document.querySelector(".l")
     camnpo_lg.innerHTML=`
-    <form id="cadastroForm">
+   <div class="cadastro-container">
+    <div class="cadastro-card">
+        
+        <button class="fechar-card" id="fecharcard">
+                ×
+        </button>
+        <div class="login-titulo">
+            <h2>Criar conta</h2>
+            <p>Crie sua conta Distributio</p>
+        </div>
 
-    <div class="campo-login">
-        <label for="nome">Nome</label>
-        <input
-            type="text"
-            id="nome"
-            placeholder="Digite seu nome"
-            required
-        >
+        <form id="cadastroForm">
+
+            <div class="campo-login">
+                <label for="nome">Nome</label>
+                <input
+                    type="text"
+                    id="nome"
+                    placeholder="Digite seu nome"
+                    required
+                >
+            </div>
+
+            <div class="campo-login">
+                <label for="email">E-mail</label>
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Digite seu e-mail"
+                    required
+                >
+            </div>
+
+            <div class="campo-login">
+                <label for="senha">Senha</label>
+                <input
+                    type="password"
+                    id="senha"
+                    placeholder="Digite sua senha"
+                    required
+                >
+            </div>
+
+            <div class="campo-login">
+                <label for="confirmarSenha">Confirmar senha</label>
+                <input
+                    type="password"
+                    id="confirmarSenha"
+                    placeholder="Digite a senha novamente"
+                    required
+                >
+            </div>
+
+            <button type="submit" class="botao-entrar">
+                Criar conta
+            </button>
+
+        </form>
+
     </div>
-
-    <div class="campo-login">
-        <label for="email">E-mail</label>
-        <input
-            type="email"
-            id="email"
-            placeholder="Digite seu e-mail"
-            required
-        >
-    </div>
-
-    <div class="campo-login">
-        <label for="senha">Senha</label>
-        <input
-            type="password"
-            id="senha"
-            placeholder="Digite sua senha"
-            required
-        >
-    </div>
-
-    <div class="campo-login">
-        <label for="confirmarSenha">Confirmar senha</label>
-        <input
-            type="password"
-            id="confirmarSenha"
-            placeholder="Digite a senha novamente"
-            required
-        >
-    </div>
-
-    <button type="submit" class="botao-entrar">
-        Criar conta
-    </button>
-
-</form>
+</div>
     `
+    const cadastroContainer = document.querySelector(".cadastro-container");
+    const fecharcadastro = document.querySelector("#fecharcard")
+    cadastroContainer.classList.add("ativo");
+    fecharcadastro.addEventListener("click", function() {
+        cadastroContainer.classList.remove("ativo");
+    });
+
     const cadastroForm = document.querySelector("#cadastroForm");
 
 cadastroForm.addEventListener("submit", (event) => {
@@ -70,42 +91,27 @@ cadastroForm.addEventListener("submit", (event) => {
         return;
     }
 
-
-    // Verifica se o e-mail já existe
     const usuarioExistente = usuer.find(
         u => u.email === email
     );
 
     if (usuarioExistente) {
-
         alert("Esse e-mail já está cadastrado!");
-
         return;
     }
 
 
-    // Cria o novo usuário
-    const novoUsuario = {
 
+    let novoUsuario = {
         id: usuer.length + 1,
         nome: nome,
         email: email,
         senha: senha
 
     };
-
-
-    // Adiciona ao array
     usuer.push(novoUsuario);
-
-
-    console.log("Novo usuário:", novoUsuario);
-    console.log("Usuários:", usuer);
-
-
     alert("Conta criada com sucesso!");
-
     cadastroForm.reset();
-
+    cadastroContainer.classList.remove("ativo");
 });
 }

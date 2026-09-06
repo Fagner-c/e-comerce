@@ -95,12 +95,12 @@ const cardDesconto = document.querySelector(".card-desconto");
 const btnLogin = document.querySelector(".btn-login");
 btnLogin.addEventListener("click", function() {
         login_ativo = login(usuer)
-        console.log(login_ativo)
     });
-document.addEventListener("click", function(event) {
 
+document.addEventListener("click", function(event) {
+    
     if (event.target.classList.contains("new-conta")) {
-        conta(usuer);
+        conta(usuer)
     }
 
 });
