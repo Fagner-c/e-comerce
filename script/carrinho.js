@@ -123,10 +123,7 @@ export function carrinho(produto){
 
                 const i = Number(event.target.dataset.index);
 
-                console.log("Removendo:", produto[i]);
-
                 produto.splice(i, 1);
-
                 carrinho(produto);
             }
 

@@ -104,9 +104,10 @@ cadastroForm.addEventListener("submit", (event) => {
 
     let novoUsuario = {
         id: usuer.length + 1,
-        nome: nome,
         email: email,
-        senha: senha
+        senha: senha,
+        produtos: [],
+        qt : 0
 
     };
     usuer.push(novoUsuario);
