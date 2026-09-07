@@ -7,7 +7,8 @@ import { openProduct } from "./campo_produto.js";
 import { carrinho } from "./carrinho.js";
 import { login } from "./login.js";
 import { conta } from "./criar-conta.js";
-var login_ativo = false
+var login_ativo 
+var user_index
 let products = [
   {id:1,name:"Fone Bluetooth Pro",price:129.90,category:"Eletrônicos",icon:"🎧",rating:4.8,description:"Fone sem fio com estojo de carregamento, conexão rápida e bateria de longa duração.", quantidade: 1},
   {id:2,name:"Smartwatch Fit X",price:189.90,category:"Eletrônicos",icon:"⌚",rating:4.7,description:"Smartwatch moderno com monitoramento de atividades, notificações e tela colorida.",quantidade: 1},
@@ -19,7 +20,7 @@ let products = [
   {id:8,name:"Garrafa Térmica",price:49.90,category:"Acessórios",icon:"🧴",rating:4.8,description:"Garrafa térmica reutilizável para manter sua bebida na temperatura ideal.", quantidade: 1}
 ];
 let usuer=[
-    {id:1, email:"fagnercaardoso@gmail.com", senha:"abacate"},
+    {id:1, email:"fagnercaardoso@gmail.com", senha:"abacate", produtos: []},
 ]
 produtos_todos(products)
 const btn_todos = document.querySelector('#btn-todos')
@@ -58,20 +59,26 @@ sectionAlvo.addEventListener("click", function(event) {
 });
 let c = 0
 document.addEventListener("click", function(event) {
-    
-    if (event.target.classList.contains("add-cart")) {
+        if (event.target.classList.contains("add-cart")) {
+            if( login_ativo == true){
         
-        let cont = document.querySelector('.compra') 
-        cont.textContent = `${c+=1}`
-        const id = Number(event.target.dataset.id);
+                let cont = document.querySelector('.compra') 
+                cont.textContent = `${c+=1}`
+                const id = Number(event.target.dataset.id);
 
-        const produto = products.find(
-            product => product.id === id
-        );
-        
-        carrinho_function(produto);
-    }
-
+                const produto = products.find(
+                    product => product.id === id
+                );
+                
+                carrinho_function(produto);
+            }
+            else{
+                login(usuer, function(status1,status2){
+            login_ativo = status1
+            user_index = status2
+                })
+            }
+         }
 });
 
 let products_comprados= [];
@@ -94,7 +101,13 @@ const cardDesconto = document.querySelector(".card-desconto");
 });
 const btnLogin = document.querySelector(".btn-login");
 btnLogin.addEventListener("click", function() {
-        login_ativo = login(usuer)
+            login(usuer, function(status1,status2){
+            login_ativo = status1
+            user_index = status2
+        })
+            
+        
+        
     });
 
 document.addEventListener("click", function(event) {
@@ -102,5 +115,36 @@ document.addEventListener("click", function(event) {
     if (event.target.classList.contains("new-conta")) {
         conta(usuer)
     }
+    if (event.target.classList.contains("btn-comprar")) {
+        if(login_ativo == true){
+            let cont = document.querySelector('.compra') 
+            cont.textContent = `${c+=1}`
+            const id = Number(event.target.dataset.id);
 
+            const produto = products.find(
+                product => product.id === id
+            );
+            
+            carrinho_function(produto);
+            carrinho(products_comprados)
+        }
+        else{
+            login(usuer, function(status1,status2){
+            login_ativo = status1
+            user_index = status2
+                })
+            }
+        }
+    if (event.target.classList.contains("finalizar-compra")) {
+        if(login_ativo == true){
+            console.log(user_index)
+        }
+        else{
+            login(usuer, function(status1,status2){
+            login_ativo = status1
+            user_index = status2
+        })
+        }
+    }
 });
+

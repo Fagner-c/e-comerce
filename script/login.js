@@ -1,5 +1,6 @@
 var loginest = false
-export function login(usuer){
+var user_index
+export function login(usuer, attlg){
     if(loginest == false){
         const camnpo_lg = document.querySelector(".l")
         camnpo_lg.innerHTML=`
@@ -72,6 +73,7 @@ export function login(usuer){
         fecharLogin.addEventListener("click", function() {
             loginContainer.classList.remove("ativo");
             loginest = false
+            attlg(loginest)
         });
         const loginForm = document.querySelector("#loginForm");
 
@@ -88,7 +90,10 @@ export function login(usuer){
 
             if (usuario.senha === senha) {
                 loginContainer.classList.remove("ativo");
-                loginest=  true
+                loginest = true
+                user_index = usuario.id-1
+                attlg(loginest, user_index)
+                
 
             } else {
 
@@ -107,5 +112,5 @@ export function login(usuer){
     else{
         alert("voce já está logado")
     }
-    return loginest
+           attlg(loginest, user_index)
 }
