@@ -73,11 +73,10 @@ sectionAlvo.addEventListener("click", function(event) {
 });
 document.addEventListener("click", function(event) {
         if (event.target.classList.contains("add-cart")) {
-            console.log(usuer)
+            if( login_ativo == true){
             let cont = document.querySelector('.compra') 
             usuer[user_index].qt ++
             cont.textContent = `${usuer[user_index].qt}`
-            if( login_ativo == true){
                 const id = Number(event.target.dataset.id);
                 const produto = products.find(
                     product => product.id === id
@@ -122,7 +121,6 @@ const cardDesconto = document.querySelector(".card-desconto");
         btn_compra.addEventListener('click', () => {
                 if(login_ativo == true){
                 cardDesconto.classList.add("off");
-                console.log(usuer)
                 carrinho(usuer[user_index].produtos)}
                 else{
                     cardDesconto.classList.add("off");
@@ -132,19 +130,21 @@ const cardDesconto = document.querySelector(".card-desconto");
 });
 const btnLogin = document.querySelector(".btn-login");
 btnLogin.addEventListener("click", function() {
-            login(usuer, function(status1,status2){
+    if(login_ativo == false){
+        login(usuer, function(status1,status2){
             login_ativo = status1
             user_index = status2
-             localStorage.setItem(
+        localStorage.setItem(
         "login_ativo",
         JSON.stringify(login_ativo)
-    );
+            );
 
     localStorage.setItem(
         "user_index",
         JSON.stringify(user_index)
     );
         })
+            }
     });
 
 document.addEventListener("click", function(event) {
