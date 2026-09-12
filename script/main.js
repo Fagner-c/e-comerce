@@ -7,6 +7,7 @@ import { openProduct } from "./campo_produto.js";
 import { carrinho } from "./carrinho.js";
 import { login } from "./login.js";
 import { conta } from "./criar-conta.js";
+import { fim } from "./fim_compra.js";
 let products = [
   {id:1,name:"Fone Bluetooth Pro",price:129.90,category:"Eletrônicos",icon:"🎧",rating:4.8,description:"Fone sem fio com estojo de carregamento, conexão rápida e bateria de longa duração.", quantidade: 1},
   {id:2,name:"Smartwatch Fit X",price:189.90,category:"Eletrônicos",icon:"⌚",rating:4.7,description:"Smartwatch moderno com monitoramento de atividades, notificações e tela colorida.",quantidade: 1},
@@ -148,7 +149,9 @@ btnLogin.addEventListener("click", function() {
     });
 
 document.addEventListener("click", function(event) {
-    
+    if(event.target.classList.contains('finalizar-compra')){
+        fim()
+    }
     if (event.target.classList.contains("new-conta")) {
         conta(usuer)
         localStorage.setItem("usuario", JSON.stringify(usuer))
